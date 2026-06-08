@@ -46,7 +46,6 @@ class Creature
 	// Les attaques d’une cr´eature sont 
 	// enti`erement d´etermin´ees par son 
 	// type(toutes les cr´eatures
-
 public:
 	static int s_creatureCount;
 	int m_id;
@@ -55,7 +54,6 @@ public:
 	float m_vie;
 	float m_att;
 	float m_def;
-	Creature();
 	Creature(
 		const string& NAME,
 		const ECreatureType& TYPE,
@@ -63,9 +61,8 @@ public:
 		const float& ATT,
 		const float& DEF);
 	virtual ~Creature();
-	string PrintType(const ECreatureType& TYPE);
-	void Print();
-	virtual void ABSTRACT() const = 0; // methode virtuelle pure (aussi appele methode virtuelle pure)
+	virtual string ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const = 0; // methode virtuelle pure (aussi appele methode virtuelle pure)
+	virtual void ABSTRACT_PRINT() const = 0; // methode virtuelle pure (aussi appele methode virtuelle pure)
 	virtual void ABSTRACT_20_ATT_TOUR() const = 0;
 private:
 };

@@ -1,5 +1,6 @@
 ﻿#include "Plante.h"
 #include "Creature.h"
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -40,9 +41,13 @@ Plante::~Plante()
 	cout << "... creature detruite plante " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-void Plante::ABSTRACT() const
+string Plante::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
 {
-	cout << "ABSTRACT plante called" << endl;
+	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
+}
+void Plante::ABSTRACT_PRINT() const
+{
+	Creature::ABSTRACT_PRINT();
 }
 void Plante::ABSTRACT_20_ATT_TOUR() const
 {

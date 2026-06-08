@@ -116,7 +116,7 @@ void AfficherCreatures(const vector<Creature*>& CREATURES)
 	cout << "| showing creatures |" << endl;
 	cout << "---------------------" << endl;
 	for (int i = 0; i < CREATURES.size(); i++)
-		CREATURES[i]->Print();
+		CREATURES[i]->ABSTRACT_PRINT();
 	system("pause");
 }
 void StatsCreature(const vector<Creature*>& CREATURES)
@@ -145,7 +145,7 @@ void StatsCreature(const vector<Creature*>& CREATURES)
 			return;
 		else
 		{
-			CREATURES[input]->Print();
+			CREATURES[input]->ABSTRACT_PRINT();
 			system("pause");
 		}
 

@@ -1,5 +1,6 @@
 ﻿#include "Eau.h"
 #include "Creature.h"
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -38,11 +39,11 @@ Eau::~Eau()
 	cout << "... creature detruite d'eau " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-void Eau::ABSTRACT() const 
+string Eau::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
 {
-	cout << "ABSTRACT Eau called" << endl;
+	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
 }
-void Eau::ABSTRACT_20_ATT_TOUR() const
+void Eau::ABSTRACT_PRINT() const 
 {
-	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
+	Creature::ABSTRACT_PRINT();
 }

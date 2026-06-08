@@ -1,5 +1,6 @@
 ﻿#include "Electrique.h"
 #include "Creature.h"
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -42,9 +43,13 @@ Electrique::~Electrique()
 	cout << "... creature detruite d'electrique " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-void Electrique::ABSTRACT() const
+string Electrique::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
 {
-	cout << "ABSTRACT Electrique called" << endl;
+	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
+}
+void Electrique::ABSTRACT_PRINT() const
+{
+	Creature::ABSTRACT_PRINT();
 }
 void Electrique::ABSTRACT_20_ATT_TOUR() const
 {

@@ -1,4 +1,5 @@
 ﻿#include "Creature.h"
+#include <string>
 #pragma once
 
 class Feu : public Creature
@@ -13,8 +14,8 @@ public:
 		const float& ATT,
 		const float& DEF);
 	virtual ~Feu();  // le mot cle virtuel pourrait etre omi vu que le parent est virtual
-	void ABSTRACT() const override; // override de methode virtuelle pure (aussi appele methode virtuelle pure)
+	string ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const override; // override de methode virtuelle pure (aussi appele methode virtuelle pure)
+	void ABSTRACT_PRINT() const override; // override de methode virtuelle pure (aussi appele methode virtuelle pure)
 	void ABSTRACT_20_ATT_TOUR() const override;
-
 private:
 };

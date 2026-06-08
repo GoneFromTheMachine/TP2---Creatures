@@ -4,12 +4,7 @@
 using namespace std;
 
 int Creature::s_creatureCount = 0;
-Creature::Creature() :
-	m_id(++s_creatureCount)
-{
-	cout << "creature cree sans params #";
-	cout << m_id << endl;
-}
+
 Creature::Creature(
 	const string& NAME,
 	const ECreatureType& TYPE,
@@ -32,8 +27,7 @@ Creature::~Creature()
 	cout << "creature detruite restants:";
 	cout << s_creatureCount << endl;
 }
-
-string Creature::PrintType(const ECreatureType& TYPE)
+string Creature::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
 {
 	switch (TYPE)
 	{
@@ -49,20 +43,15 @@ string Creature::PrintType(const ECreatureType& TYPE)
 		return "INVALID TYPE";
 	}
 }
-void Creature::Print()
+void Creature::ABSTRACT_PRINT() const
 {
 	cout << endl;
 	cout << "printing creature info" << endl;
 	cout << "id: " << m_id << endl;
 	cout << "name: " << m_name << endl;
-	cout << "type: " << PrintType(m_type) << endl;
+	cout << "type: " << ABSTRACT_PRINT_TYPE(m_type) << endl;
 	cout << "vie: " << m_vie << endl;
 	cout << "att: " << m_att << endl;
 	cout << "def: " << m_def << endl;
 	cout << endl;
 }
-
-//void Creature::ABSTRACT() const
-//{
-//	cout << "ABSTRACT" << endl;
-//}
