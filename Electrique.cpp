@@ -44,16 +44,3 @@ Electrique::~Electrique()
 	cout << "... creature detruite d'electrique ";
 	cout << "avec id# " << m_id << endl;
 }
-string Electrique::ABSTRACT_PRINT_TYPE(
-	const ECreatureType& TYPE) const
-{
-	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
-}
-void Electrique::ABSTRACT_PRINT() const
-{
-	Creature::ABSTRACT_PRINT();
-}
-void Electrique::ABSTRACT_20_ATT_TOUR() const
-{
-	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
-}

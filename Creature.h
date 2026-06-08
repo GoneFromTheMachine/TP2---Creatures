@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 #pragma once
 
@@ -69,12 +70,19 @@ public:
 		const float& ATT,
 		const float& DEF);
 	virtual ~Creature();
-	virtual string ABSTRACT_PRINT_TYPE(
+	string PrintType(
 		const ECreatureType& TYPE) 
-		const = 0;
-	virtual void ABSTRACT_PRINT() 
-		const = 0;
-	virtual void ABSTRACT_20_ATT_TOUR() 
-		const = 0;
+		const;
+	void Print() 
+		const;
+	void StatsCreature(
+		const vector<Creature*>& CREATURES) 
+		const;
+	void ModCreature(
+		const vector<Creature*>& CREATURES) 
+		const;
+	void DeleteCreature(
+		const vector<Creature*>& CREATURES) 
+		const;
 private:
 };

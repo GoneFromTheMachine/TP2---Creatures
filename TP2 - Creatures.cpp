@@ -10,6 +10,7 @@
 using namespace std;
 
 vector<Creature*> g_creatures = {};
+//vector<int*> g_ints = { 0 , 0 };
 
 int main()
 {
@@ -81,19 +82,19 @@ void MenuCreatures(
 		{
 		case 'a':
 		case 'A':
-			AfficherCreatures(CREATURES);
+			MenuAfficherCreatures(CREATURES);
 			continue;
 		case 'b':
 		case 'B':
-			StatsCreature(CREATURES);
+			MenuStatsCreature(CREATURES);
 			continue;
 		case 'c':
 		case 'C':
-			ModCreature(CREATURES);
+			MenuModCreature(CREATURES);
 			continue;
 		case 'd':
 		case 'D':
-			DeleteCreature(CREATURES);
+			MenuDeleteCreature(CREATURES);
 			continue;
 		case 'e':
 		case 'E':
@@ -106,7 +107,7 @@ void MenuCreatures(
 		}
 	}
 }
-void AfficherCreatures(
+void MenuAfficherCreatures(
 	const vector<Creature*>& CREATURES)
 {
 	system("cls");
@@ -115,10 +116,10 @@ void AfficherCreatures(
 	cout << "| showing creatures |" << endl;
 	cout << "---------------------" << endl;
 	for (int i = 0; i < CREATURES.size(); i++)
-		CREATURES[i]->ABSTRACT_PRINT();
+		CREATURES[i]->Print();
 	system("pause");
 }
-void StatsCreature(
+void MenuStatsCreature(
 	const vector<Creature*>& CREATURES)
 {
 	while (true)
@@ -145,21 +146,21 @@ void StatsCreature(
 			return;
 		else
 		{
-			CREATURES[input]->ABSTRACT_PRINT();
+			CREATURES[input]->Print();
 			system("pause");
 		}
 
 
 	}
 }
-void ModCreature(
+void MenuModCreature(
 	const vector<Creature*>& CREATURES)
 {
 	system("cls");
 	cout << "change creatures" << endl;
 	system("pause");
 }
-void DeleteCreature(
+void MenuDeleteCreature(
 	const vector<Creature*>& CREATURES)
 {
 	system("cls");

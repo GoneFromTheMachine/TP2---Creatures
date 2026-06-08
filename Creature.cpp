@@ -1,6 +1,7 @@
 ﻿#include "Creature.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 int Creature::s_creatureCount = 0;
@@ -27,7 +28,7 @@ Creature::~Creature()
 	cout << "creature detruite restants:";
 	cout << s_creatureCount << endl;
 }
-string Creature::ABSTRACT_PRINT_TYPE(
+string Creature::PrintType(
 	const ECreatureType& TYPE) const
 {
 	switch (TYPE)
@@ -44,15 +45,61 @@ string Creature::ABSTRACT_PRINT_TYPE(
 		return "INVALID TYPE";
 	}
 }
-void Creature::ABSTRACT_PRINT() const
+void Creature::Print() const
 {
 	cout << endl;
 	cout << "printing creature info" << endl;
 	cout << "id: " << m_id << endl;
 	cout << "name: " << m_name << endl;
-	cout << "type: " << ABSTRACT_PRINT_TYPE(m_type) << endl;
+	cout << "type: " << PrintType(m_type) << endl;
 	cout << "vie: " << m_vie << endl;
 	cout << "att: " << m_att << endl;
 	cout << "def: " << m_def << endl;
 	cout << endl;
+}
+void Creature::StatsCreature(
+	const vector<Creature*>& CREATURES) const
+{
+	while (true)
+	{
+		int input = 0;
+		system("cls");
+		cout << endl;
+		cout << "showing stats creatures" << endl;
+		cout << "------------------------------" << endl;
+		cout << "| showing one creature stats |" << endl;
+		cout << "------------------------------" << endl;
+		for (int i = 0; i < CREATURES.size(); i++)
+			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
+		cout << "(-1)" << " return to menu" << endl;
+		cin >> input;
+		if (input < 0 &&
+			input > CREATURES.size() &&
+			input != -1)
+		{
+			cout << "invalid input" << endl;
+			continue;
+		}
+		else if (input == -1)
+			return;
+		else
+		{
+			CREATURES[input]->Print();
+			system("pause");
+		}
+	}
+}
+void Creature::ModCreature(
+	const vector<Creature*>& CREATURES) const
+{
+	//system("cls");
+	//cout << "change creatures" << endl;
+	//system("pause");
+}
+void Creature::DeleteCreature(
+	const vector<Creature*>& CREATURES) const
+{
+	//system("cls");
+	//cout << "delete creatures" << endl;
+	//system("pause");
 }

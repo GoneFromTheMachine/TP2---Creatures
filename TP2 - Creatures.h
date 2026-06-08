@@ -2,6 +2,8 @@
 #include <vector>
 #pragma once
 
+
+
 // Gestion des cr´eatures
 // Toutes les cr´eatures cr´e´ees 
 // doivent ˆetre conserv´ees dans une 
@@ -18,12 +20,12 @@
 // de la collection.
 void MenuCreatures(
 	const vector<Creature*>& CREATURES);
-void AfficherCreatures(
+void MenuAfficherCreatures(
 	const vector<Creature*>& CREATURES);
-void StatsCreature(
+void MenuStatsCreature(
 	const vector<Creature*>& CREATURES);
-void ModCreature(
+void MenuModCreature(
 	const vector<Creature*>& CREATURES);
-void DeleteCreature(
+void MenuDeleteCreature(
 	const vector<Creature*>& CREATURES);
 void Delete();
