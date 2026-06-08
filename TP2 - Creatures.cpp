@@ -29,6 +29,7 @@ avec h´eritage est obligatoire.
 
 // test
 // test1
+// HELLO
 
 vector<Creature*> g_creatures = {};
 
