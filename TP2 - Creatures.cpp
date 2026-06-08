@@ -38,7 +38,6 @@ int main()
 		333.0f, 
 		33.1f,
 		12.3f));
-	// hello
 	g_creatures.push_back(new Feu());
 	g_creatures.push_back(new Feu(
 		"flamme eternelle",
