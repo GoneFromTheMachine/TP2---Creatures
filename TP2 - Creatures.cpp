@@ -30,7 +30,6 @@ int main()
 	virtuelles et des constructeurs/destructeurs
 	avec h´eritage est obligatoire.
 	*/
-
 	g_creatures.push_back(new Plante());
 	g_creatures.push_back(new Plante(
 		"fleur", 
@@ -60,8 +59,8 @@ int main()
 	MenuCreatures(g_creatures);
 	Delete();
 }
-
-void MenuCreatures(const vector<Creature*>& CREATURES)
+void MenuCreatures(
+	const vector<Creature*>& CREATURES)
 {
 	char input = ' ';
 	while (true)
@@ -107,8 +106,8 @@ void MenuCreatures(const vector<Creature*>& CREATURES)
 		}
 	}
 }
-
-void AfficherCreatures(const vector<Creature*>& CREATURES)
+void AfficherCreatures(
+	const vector<Creature*>& CREATURES)
 {
 	system("cls");
 	cout << endl;
@@ -119,7 +118,8 @@ void AfficherCreatures(const vector<Creature*>& CREATURES)
 		CREATURES[i]->ABSTRACT_PRINT();
 	system("pause");
 }
-void StatsCreature(const vector<Creature*>& CREATURES)
+void StatsCreature(
+	const vector<Creature*>& CREATURES)
 {
 	while (true)
 	{
@@ -152,19 +152,20 @@ void StatsCreature(const vector<Creature*>& CREATURES)
 
 	}
 }
-void ModCreature(const vector<Creature*>& CREATURES)
+void ModCreature(
+	const vector<Creature*>& CREATURES)
 {
 	system("cls");
 	cout << "change creatures" << endl;
 	system("pause");
 }
-void DeleteCreature(const vector<Creature*>& CREATURES)
+void DeleteCreature(
+	const vector<Creature*>& CREATURES)
 {
 	system("cls");
 	cout << "delete creatures" << endl;
 	system("pause");
 }
-
 void Delete()
 {
 	cout << endl;

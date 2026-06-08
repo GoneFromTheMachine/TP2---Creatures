@@ -41,7 +41,8 @@ Plante::~Plante()
 	cout << "... creature detruite plante " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-string Plante::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
+string Plante::ABSTRACT_PRINT_TYPE(
+	const ECreatureType& TYPE) const
 {
 	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
 }

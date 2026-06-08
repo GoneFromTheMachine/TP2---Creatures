@@ -17,8 +17,8 @@ Electrique::Electrique() :
 	// r´ep´eter son attaque une seconde fois.
 	// TODO : implementer la chance de 20% de repeter 
 	// l'attaque une seconde fois ABSTRACT PURE CLASS
-	cout << "... et la creature est une Electrique avec id# " << endl;
-	cout << m_id << endl;
+	cout << "... creature detruite d'electrique ";
+	cout << "avec id# " << m_id << endl;
 }
 Electrique::Electrique(
 	const string& NAME,
@@ -35,15 +35,17 @@ Electrique::Electrique(
 	// Electrique : 
 	// poss`ede 20% de chances de 
 	// r´ep´eter son attaque une seconde fois.
-	cout << "... et la creature est une Electrique avec id# " << endl;
+	cout << "... et la creature est une Electrique ";
+	cout << "avec id# " << endl;
 	cout << m_id << endl;
 }
 Electrique::~Electrique()
 {
-	cout << "... creature detruite d'electrique " << endl;
-	cout << " avec id# " << m_id << endl;
+	cout << "... creature detruite d'electrique ";
+	cout << "avec id# " << m_id << endl;
 }
-string Electrique::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
+string Electrique::ABSTRACT_PRINT_TYPE(
+	const ECreatureType& TYPE) const
 {
 	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
 }

@@ -39,11 +39,16 @@ Eau::~Eau()
 	cout << "... creature detruite d'eau " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-string Eau::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
+string Eau::ABSTRACT_PRINT_TYPE(
+	const ECreatureType& TYPE) const
 {
 	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
 }
 void Eau::ABSTRACT_PRINT() const 
 {
 	Creature::ABSTRACT_PRINT();
+}
+void Eau::ABSTRACT_20_ATT_TOUR() const
+{
+	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
 }

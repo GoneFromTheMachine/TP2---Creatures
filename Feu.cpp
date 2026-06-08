@@ -39,7 +39,8 @@ Feu::~Feu()
 	cout << "... creature detruite de feu " << endl;
 	cout << " avec id# " << m_id << endl;
 }
-string Feu::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
+string Feu::ABSTRACT_PRINT_TYPE(
+	const ECreatureType& TYPE) const
 {
 	return Creature::ABSTRACT_PRINT_TYPE(TYPE);
 }

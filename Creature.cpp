@@ -27,7 +27,8 @@ Creature::~Creature()
 	cout << "creature detruite restants:";
 	cout << s_creatureCount << endl;
 }
-string Creature::ABSTRACT_PRINT_TYPE(const ECreatureType& TYPE) const
+string Creature::ABSTRACT_PRINT_TYPE(
+	const ECreatureType& TYPE) const
 {
 	switch (TYPE)
 	{
