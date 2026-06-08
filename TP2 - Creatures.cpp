@@ -45,11 +45,23 @@ int main()
 	g_creatures.push_back(new Feu());
 	g_creatures.push_back(new Feu(
 		"flamme eternelle",
-		123123.13,
-		12377.9,
+		123123.13f,
+		12377.9f,
 		12234.3f));
-	g_creatures[0]->ABSTRACT();
-	g_creatures[1]->ABSTRACT();
+	g_creatures.push_back(new Electrique());
+	g_creatures.push_back(new Electrique(
+		"Electricite pure",
+		1313.12f,
+		1233.22f,
+		777.33));
+	g_creatures.push_back(new Eau());
+	g_creatures.push_back(new Eau(
+		"Riviere",
+		1634.12f,
+		1343.22f,
+		744.33f));
+	//g_creatures[0]->ABSTRACT();
+	//g_creatures[1]->ABSTRACT();
 
 	system("pause");
 	MenuCreatures(g_creatures);

@@ -65,6 +65,6 @@ public:
 	virtual ~Creature();
 	string PrintType(const ECreatureType& TYPE);
 	void Print();
-	virtual void ABSTRACT() const = 0; // methode virtuelle pure
+	virtual void ABSTRACT() const = 0; // methode virtuelle pure (aussi appele methode virtuelle pure)
 private:
 };

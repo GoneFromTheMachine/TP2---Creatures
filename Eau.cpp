@@ -3,14 +3,35 @@
 #include <iostream>
 using namespace std;
 
-Eau::Eau()
+Eau::Eau() :
+	Creature(
+		"Eau par defaut",
+		ECreatureType::Eau,
+		1233.01f,
+		2.0f,
+		1.0f * 1.1f)
 {
 	// Eau: 
 	// r´eduit tous les d´egˆats re¸cus de 10 % .
-	m_type = ECreatureType::Eau;
-	cout << "... et la creature est d'Eau id# " << endl;
+	cout << "... et la creature est un Eau avec id# " << endl;
 	cout << m_id << endl;
-	m_att *= m_multiplicateur;
+}
+Eau::Eau(
+	const string& NAME,
+	const float& VIE,
+	const float& ATT,
+	const float& DEF) :
+	Creature(
+		NAME,
+		ECreatureType::Eau,
+		VIE,
+		ATT,
+		DEF * 1.1f)
+{
+	// Eau: 
+	// r´eduit tous les d´egˆats re¸cus de 10 % .
+	cout << "... et la creature est une Eau avec id# " << endl;
+	cout << m_id << endl;
 }
 Eau::~Eau()
 {

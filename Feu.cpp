@@ -3,22 +3,12 @@
 #include <iostream>
 using namespace std;
 
-//Feu::Feu()
-//{
-//	// Feu : 
-//	// inflige 10% de d´egˆats suppl´ementaires.
-//	m_type = ECreatureType::Feu;
-//	cout << "... et la creature est de Feu avec id: " << endl;
-//	cout << m_id << endl;
-//	m_att *= m_multiplicateur;
-//
-//}
 Feu::Feu() :
 	Creature(
 		"Feu par defaut",
 		ECreatureType::Feu,
 		10.0f,
-		2.0f * 1.1,
+		2.0f * 1.1f,
 		1.0f)
 {
 	// Feu : 
@@ -35,7 +25,7 @@ Feu::Feu(
 		NAME,
 		ECreatureType::Feu,
 		VIE,
-		ATT * 1.1,
+		ATT * 1.1f,
 		DEF)
 {
 	// Feu : 

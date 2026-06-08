@@ -13,7 +13,7 @@ public:
 		const float& ATT,
 		const float& DEF);
 	virtual ~Feu();  // le mot cle virtuel pourrait etre omi vu que le parent est virtual
-	void ABSTRACT() const override; // fonction virtuelle pure
+	void ABSTRACT() const override; // override de methode virtuelle pure (aussi appele methode virtuelle pure)
 private:
 };
 
