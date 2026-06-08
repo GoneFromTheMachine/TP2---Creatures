@@ -29,6 +29,8 @@ avec h´eritage est obligatoire.
 
 // test
 // test1
+// HELLO
+// new branch
 
 vector<Creature*> g_creatures = {};
 
