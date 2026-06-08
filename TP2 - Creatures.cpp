@@ -27,6 +27,8 @@ virtuelles et des constructeurs/destructeurs
 avec h´eritage est obligatoire.
 */
 
+// test
+
 vector<Creature*> g_creatures = {};
 
 int main()
