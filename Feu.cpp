@@ -1,0 +1,55 @@
+﻿#include "Feu.h"
+#include "Creature.h"
+#include <iostream>
+using namespace std;
+
+//Feu::Feu()
+//{
+//	// Feu : 
+//	// inflige 10% de d´egˆats suppl´ementaires.
+//	m_type = ECreatureType::Feu;
+//	cout << "... et la creature est de Feu avec id: " << endl;
+//	cout << m_id << endl;
+//	m_att *= m_multiplicateur;
+//
+//}
+Feu::Feu() :
+	Creature(
+		"Feu par defaut",
+		ECreatureType::Feu,
+		10.0f,
+		2.0f * 1.1,
+		1.0f)
+{
+	// Feu : 
+	// inflige 10% de d´egˆats suppl´ementaires.
+	cout << "... et la creature est un Feu avec id# " << endl;
+	cout << m_id << endl;
+}
+Feu::Feu(
+	const string& NAME,
+	const float& VIE,
+	const float& ATT,
+	const float& DEF) :
+	Creature(
+		NAME,
+		ECreatureType::Feu,
+		VIE,
+		ATT * 1.1,
+		DEF)
+{
+	// Feu : 
+	// inflige 10% de d´egˆats suppl´ementaires.
+	cout << "... et la creature est une Feu avec id# " << endl;
+	cout << m_id << endl;
+}
+
+Feu::~Feu() 
+{
+	cout << "... creature detruite de feu " << endl;
+	cout << " avec id# " << m_id << endl;
+}
+void Feu::ABSTRACT() const
+{
+	cout << "ABSTRACT feu called" << endl;
+}
