@@ -9,33 +9,27 @@
 #include <cstdlib>
 using namespace std;
 
-/*
-Dans ce deuxi`eme TP de programmation orient´ee 
-objet, 
-vous devrez r´ealiser un syst`eme de
-gestion et de combat de cr´eatures en console.
-Ce travail teste non seulement votre 
-compr´ehension des concepts 
-de programmation orient´ee objet, mais ´egalement 
-votre capacit´e `a 
-concevoir une architecture logicielle claire et
-r´eutilisable. Ce travail doit ˆetre r´ealis´e en
-´equipe de deux ´etudiants.
-L’utilisation de collections, de l’h´eritage, 
-du polymorphisme, des m´ethodes
-virtuelles et des constructeurs/destructeurs 
-avec h´eritage est obligatoire.
-*/
-
-// test
-// test1
-// HELLO
-// new branch
-
 vector<Creature*> g_creatures = {};
 
 int main()
 {
+	/*
+	Dans ce deuxi`eme TP de programmation orient´ee
+	objet,
+	vous devrez r´ealiser un syst`eme de
+	gestion et de combat de cr´eatures en console.
+	Ce travail teste non seulement votre
+	compr´ehension des concepts
+	de programmation orient´ee objet, mais ´egalement
+	votre capacit´e `a
+	concevoir une architecture logicielle claire et
+	r´eutilisable. Ce travail doit ˆetre r´ealis´e en
+	´equipe de deux ´etudiants.
+	L’utilisation de collections, de l’h´eritage,
+	du polymorphisme, des m´ethodes
+	virtuelles et des constructeurs/destructeurs
+	avec h´eritage est obligatoire.
+	*/
 
 	g_creatures.push_back(new Plante());
 	g_creatures.push_back(new Plante(
@@ -61,8 +55,6 @@ int main()
 		1634.12f,
 		1343.22f,
 		744.33f));
-	//g_creatures[0]->ABSTRACT();
-	//g_creatures[1]->ABSTRACT();
 
 	system("pause");
 	MenuCreatures(g_creatures);

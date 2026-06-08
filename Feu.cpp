@@ -33,7 +33,6 @@ Feu::Feu(
 	cout << "... et la creature est une Feu avec id# " << endl;
 	cout << m_id << endl;
 }
-
 Feu::~Feu() 
 {
 	cout << "... creature detruite de feu " << endl;
@@ -42,4 +41,8 @@ Feu::~Feu()
 void Feu::ABSTRACT() const
 {
 	cout << "ABSTRACT feu called" << endl;
+}
+void Feu::ABSTRACT_20_ATT_TOUR() const
+{
+	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
 }

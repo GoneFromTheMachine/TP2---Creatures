@@ -44,3 +44,10 @@ void Plante::ABSTRACT() const
 {
 	cout << "ABSTRACT plante called" << endl;
 }
+void Plante::ABSTRACT_20_ATT_TOUR() const
+{
+	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
+	// Plante : 
+	// r´eg´en`ere 5% de ses points de vie 
+	// `a la fin de chaque tour.
+}

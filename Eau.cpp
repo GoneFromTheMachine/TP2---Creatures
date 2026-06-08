@@ -42,3 +42,7 @@ void Eau::ABSTRACT() const
 {
 	cout << "ABSTRACT Eau called" << endl;
 }
+void Eau::ABSTRACT_20_ATT_TOUR() const
+{
+	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
+}

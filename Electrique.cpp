@@ -46,3 +46,7 @@ void Electrique::ABSTRACT() const
 {
 	cout << "ABSTRACT Electrique called" << endl;
 }
+void Electrique::ABSTRACT_20_ATT_TOUR() const
+{
+	cout << "ABSTRACT_20_ATT_TOUR called" << endl;
+}
