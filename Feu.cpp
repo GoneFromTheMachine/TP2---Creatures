@@ -8,14 +8,16 @@ Feu::Feu() :
 	Creature(
 		"Feu par defaut",
 		ECreatureType::Feu,
-		10.0f,
-		2.0f * 1.1f,
-		1.0f)
+		10,
+		2,
+		1)
 {
-	// Feu : 
-	// inflige 10% de d´egˆats suppl´ementaires.
 	cout << "... et la creature est un Feu avec id# " << endl;
 	cout << m_id << endl;
+	DistributionPoints(
+		10, 
+		2,
+		1);
 }
 Feu::Feu(
 	const string& NAME,
@@ -26,17 +28,27 @@ Feu::Feu(
 		NAME,
 		ECreatureType::Feu,
 		VIE,
-		ATT * 1.1f,
+		ATT,
 		DEF)
+{
+	cout << "... et la creature est une Feu avec id# " << endl;
+	cout << m_id << endl;
+	DistributionPoints(
+		VIE, 
+		ATT, 
+		DEF);
+}
+void Feu::DistributionPoints(
+	const float& VIE,
+	const float& ATT,
+	const float& DEF)
 {
 	// Feu : 
 	// inflige 10% de d´egˆats suppl´ementaires.
-	cout << "... et la creature est une Feu avec id# " << endl;
-	cout << m_id << endl;
-}
-void Feu::DistributionPoints()
-{
-
+	Creature::DistributionPoints(
+		VIE, 
+		ATT*1.1f, 
+		DEF);
 }
 Feu::~Feu() 
 {

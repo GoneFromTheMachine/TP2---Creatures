@@ -63,6 +63,8 @@ public:
 	float m_vie;
 	float m_att;
 	float m_def;
+	float m_chanceDoubleAtt = 1;
+	float m_regenPerTurn = 0;
 	float m_ptsDistrubution = 100.0f;
 	Creature(
 		const string& NAME,
@@ -76,15 +78,15 @@ public:
 		const;
 	void Print() 
 		const;
-	void StatsCreature(
-		const vector<Creature*>& CREATURES) 
-		const;
 	void ModCreature(
 		const vector<Creature*>& CREATURES) 
 		const;
 	void DeleteCreature(
 		const vector<Creature*>& CREATURES) 
 		const;
-	virtual void DistributionPoints() const = 0;
+	virtual void DistributionPoints(
+		const float& VIE,
+		const float& ATT,
+		const float& DEF) = 0;
 private:
 };

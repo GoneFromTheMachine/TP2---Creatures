@@ -14,7 +14,10 @@ public:
 		const float& VIE,
 		const float& ATT,
 		const float& DEF);
-	void DistributionPoints();
+	void DistributionPoints(
+		const float& VIE,
+		const float& ATT,
+		const float& DEF) override;
 	virtual ~Electrique();
 private:
 };

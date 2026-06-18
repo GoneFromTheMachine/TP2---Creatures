@@ -8,14 +8,13 @@ Eau::Eau() :
 	Creature(
 		"Eau par defaut",
 		ECreatureType::Eau,
-		1233.01f,
-		2.0f,
-		1.0f * 1.1f)
+		55,
+		11,
+		55)
 {
-	// Eau: 
-	// r´eduit tous les d´egˆats re¸cus de 10 % .
 	cout << "... et la creature est un Eau avec id# " << endl;
 	cout << m_id << endl;
+	DistributionPoints(55, 11, 55);
 }
 Eau::Eau(
 	const string& NAME,
@@ -27,18 +26,25 @@ Eau::Eau(
 		ECreatureType::Eau,
 		VIE,
 		ATT,
-		DEF * 1.1f)
+		DEF)
 {
-	// Eau: 
-	// r´eduit tous les d´egˆats re¸cus de 10 % .
 	cout << "... et la creature est une Eau avec id# " << endl;
 	cout << m_id << endl;
+	DistributionPoints(VIE, ATT, DEF);
 }
 
 
-void Eau::DistributionPoints()
+void Eau::DistributionPoints(
+	const float& VIE,
+	const float& ATT,
+	const float& DEF)
 {
-
+	// Eau: 
+	// r´eduit tous les d´egˆats re¸cus de 10 % .
+	Creature::DistributionPoints(
+		VIE, 
+		ATT, 
+		DEF*1.1f);
 }
 
 Eau::~Eau()

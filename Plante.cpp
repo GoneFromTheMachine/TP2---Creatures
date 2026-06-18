@@ -9,15 +9,13 @@ Plante::Plante() :
 	Creature(
 	"plante par defaut",
 	ECreatureType::Plante,
-	10.0f,
-	2.0f,
-	1.0f)
+	10,
+	2,
+	1)
 {
-	// Plante : 
-	// r´eg´en`ere 5% de ses points de vie 
-	// `a la fin de chaque tour.
 	cout << "... et la creature est une Plante avec id# " << endl;
 	cout << m_id << endl;
+	DistributionPoints(10, 2, 1);
 }
 Plante::Plante(
 	const string& NAME,
@@ -31,16 +29,25 @@ Plante::Plante(
 	ATT,
 	DEF)
 {
+	cout << "... et la creature est une Plante avec id# " << endl;
+	cout << m_id << endl;
+	DistributionPoints(VIE, ATT, DEF);
+}
+void Plante::DistributionPoints(
+	const float& VIE,
+	const float& ATT,
+	const float& DEF)
+{
 	// Plante : 
 	// r´eg´en`ere 5% de ses points de vie 
 	// `a la fin de chaque tour.
-	cout << "... et la creature est une Plante avec id# " << endl;
-	cout << m_id << endl;
+	Creature::DistributionPoints(
+		VIE, 
+		ATT, 
+		DEF);
+	m_regenPerTurn = 0.05f;
 }
-void Plante::DistributionPoints()
-{
 
-}
 Plante::~Plante()
 {
 	cout << "... creature detruite plante " << endl;

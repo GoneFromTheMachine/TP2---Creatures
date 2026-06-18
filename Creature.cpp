@@ -57,38 +57,6 @@ void Creature::Print() const
 	cout << "def: " << m_def << endl;
 	cout << endl;
 }
-void Creature::StatsCreature(
-	const vector<Creature*>& CREATURES) const
-{
-	while (true)
-	{
-		int input = 0;
-		system("cls");
-		cout << endl;
-		cout << "showing stats creatures" << endl;
-		cout << "------------------------------" << endl;
-		cout << "| showing one creature stats |" << endl;
-		cout << "------------------------------" << endl;
-		for (int i = 0; i < CREATURES.size(); i++)
-			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
-		cout << "(-1)" << " return to menu" << endl;
-		cin >> input;
-		if (input < 0 &&
-			input > CREATURES.size() &&
-			input != -1)
-		{
-			cout << "invalid input" << endl;
-			continue;
-		}
-		else if (input == -1)
-			return;
-		else
-		{
-			CREATURES[input]->Print();
-			system("pause");
-		}
-	}
-}
 void Creature::ModCreature(
 	const vector<Creature*>& CREATURES) const
 {
@@ -102,4 +70,87 @@ void Creature::DeleteCreature(
 	//system("cls");
 	//cout << "delete creatures" << endl;
 	//system("pause");
+}
+void Creature::DistributionPoints(
+	const float& VIE,
+	const float& ATT,
+	const float& DEF)
+{
+	cout << endl;
+	// assignation VIE
+	if (m_ptsDistrubution > VIE)
+	{
+		m_vie = VIE;
+		m_ptsDistrubution -= VIE;
+		cout << "assignation VIE ";
+		cout << m_vie << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+	else
+	{
+		m_vie = m_ptsDistrubution;
+		m_ptsDistrubution = 0;
+		cout << "plus de pts a distribuer ";
+		cout << "assignation VIE ";
+		cout << m_vie << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+
+	// assignation ATT
+	if (m_ptsDistrubution > ATT)
+	{
+		m_att = ATT;
+		m_ptsDistrubution -= ATT;
+		cout << "assignation ATT ";
+		cout << m_att << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+	else
+	{
+		m_att = m_ptsDistrubution;
+		m_ptsDistrubution = 0;
+		cout << "plus de pts a distribuer ";
+		cout << "assignation ATT ";
+		cout << m_att << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+
+	// assignation DEF
+	if (m_ptsDistrubution > DEF)
+	{
+		m_def = DEF;
+		m_ptsDistrubution -= DEF;
+		cout << "assignation DEF ";
+		cout << m_def << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+	else
+	{
+		m_def = m_ptsDistrubution;
+		m_ptsDistrubution = 0;
+		cout << "plus de pts a distribuer ";
+		cout << "assignation DEF ";
+		cout << m_def << " ";
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+	if (m_ptsDistrubution > 0)
+	{
+		m_vie += m_ptsDistrubution / 3;
+		m_att += m_ptsDistrubution / 3;
+		m_def += m_ptsDistrubution / 3;
+		m_ptsDistrubution = 0;
+		cout << "points non depenses redistribues : " << endl;
+		cout << "VIE: " << m_vie << endl;
+		cout << "ATT: " << m_att << endl;
+		cout << "DEF: " << m_def << endl;
+		cout << "points de distributions restants: ";
+		cout << m_ptsDistrubution << endl;
+	}
+	cout << endl;
 }
