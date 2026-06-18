@@ -152,7 +152,7 @@ void Creature::ModificationNameType(
 	const ECreatureType& TYPE)
 {
 	if (TYPE > ECreatureType::Count ||
-		static_cast<int>(TYPE) < 0)
+		(int)ECreatureType(TYPE) < 0)
 	{
 		system("cls");
 		cout << "invalid type input" << endl;

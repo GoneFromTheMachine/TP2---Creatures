@@ -7,6 +7,7 @@
 #include "Main.h"
 #include <vector>
 #include <cstdlib>
+#include <windows.h>
 using namespace std;
 
 int main()
@@ -336,9 +337,9 @@ void MenuCreateCreature(
 		cin >> inputDef;
 		cout << endl;
 
-		for (int i = 0; i < static_cast<int>(ECreatureType::Count); i++)
+		for (int i = 0; i < (int)ECreatureType::Count; i++)
 			cout << "(" << i << ") " << CREATURES[0]->PrintType(static_cast<ECreatureType>(i)) << endl;
-		
+
 		cout << "donner inputType: ";
 		cin >> inputType;
 		cout << endl;
@@ -352,7 +353,7 @@ void MenuCreateCreature(
 		if (inputVie == 0 ||
 			inputAtt == 0 ||
 			inputDef == 0 ||
-			inputType > static_cast<int>(ECreatureType::Count) ||
+			inputType > (int)ECreatureType::Count ||
 			inputType < 0)
 		{
 			system("cls");
@@ -378,25 +379,25 @@ void MenuCreateCreature(
 		}
 		else
 		{
-			if (inputType == static_cast<int>(ECreatureType::Electrique))
+			if (inputType == (int)ECreatureType::Electrique)
 				CREATURES.push_back(new Electrique(
 					inputName,
 					inputVie,
 					inputAtt,
 					inputDef));
-			if (inputType == static_cast<int>(ECreatureType::Eau))
+			if (inputType == (int)ECreatureType::Eau)
 				CREATURES.push_back(new Eau(
 					inputName,
 					inputVie,
 					inputAtt,
 					inputDef));
-			if (inputType == static_cast<int>(ECreatureType::Feu))
+			if (inputType == (int)ECreatureType::Feu)
 				CREATURES.push_back(new Feu(
 					inputName,
 					inputVie,
 					inputAtt,
 					inputDef));
-			if (inputType == static_cast<int>(ECreatureType::Plante))
+			if (inputType == (int)ECreatureType::Plante)
 				CREATURES.push_back(new Plante(
 					inputName,
 					inputVie,
@@ -464,7 +465,6 @@ void MenuCombat(
 			// debut combat
 			if (currentSelectedFighters < maxFighters)
 			{
-
 				cout << "selected fighter: ";
 				cout << "Name: " << CREATURES[input]->m_name << endl;
 				cout << "ID: " << CREATURES[input]->m_id << endl;
@@ -490,8 +490,6 @@ void MenuCombat(
 			if (currentSelectedFighters >= maxFighters)
 			{
 				system("cls");
-				system("pause");
-				system("cls");
 				cout << "all fighters selected" << endl;
 				cout << "STARTING BATTLE";
 				system("pause");
@@ -504,7 +502,7 @@ void MenuCombat(
 }
 void Combat(
 	const vector<Creature*>& CREATURES,
-	const vector<int> SELECTED)
+	const vector<int> SELECTED_ID)
 {
 	/*
 	Afficher les statistiques des deux creature au 
@@ -527,10 +525,208 @@ void Combat(
 	s'il meurt ou pas
 	En cas de double mort = match nul
 	*/
+	Creature* players[PLAYER_MAX] = { nullptr, nullptr };
+	float input1 = 0;
+	float input2 = 0;
+	bool played1 = false;
+	bool played2 = false;
 	system("cls");
-	cout << "combat" << endl;
-	system("pause");
+	for (int i = 0; i < SELECTED_ID.size(); i++)
+		for (int j = 0; j < CREATURES.size(); j++)
+			if (SELECTED_ID[i] == CREATURES[j]->m_id)
+				players[i] = CREATURES[j];
+	while (true) 
+	{
+		system("cls");
+		cout << endl;
+		cout << "-------------------------------" << endl;
+		cout << "| The Legendary Monster Arena |" << endl;
+		cout << "-------------------------------" << endl;
+		cout << endl;
+		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+		cout << endl;
+		for (int i = 0; i < PLAYER_MAX; i++)
+		{
+			cout << "FIGHTER " << i << " STATS:" << endl;
+			players[i]->Print();
+			cout << endl;
+			cout << endl;
+			cout << endl;
+		}
+		cout << endl;
+		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+		cout << "(W ou →) Attaque rapide : multiplicateur 0.8" << endl;
+		cout << "(A ou ←) Attaque normale : multiplicateur 1.0" << endl;
+		cout << "(S ou ↓) Attaque puissante : multiplicateur 1.2" << endl;
+		cout << "(D ou ↑) Attaque ultime : multiplicateur 1.5" << endl;
+		cout << endl;
+		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+		// INPUT1
+		if (ReadKey('W') ||
+			ReadKey('A') ||
+			ReadKey('S') ||
+			ReadKey('D'))
+		{
+			system("cls");
+			cout << "PLAYER 1 PLAYED" << endl;
+			played1 = true;
+			system("pause");
+		}
+		if (ReadKey('W')) input1 = 0.8;
+		if (ReadKey('S')) input1 = 1.0;
+		if (ReadKey('A')) input1 = 1.2;
+		if (ReadKey('D')) input1 = 1.5;
+		
+		// INPUT2
+		if (ReadKey(VK_UP) ||
+			ReadKey(VK_DOWN) ||
+			ReadKey(VK_LEFT) ||
+			ReadKey(VK_RIGHT))
+		{
+			system("cls");
+			cout << "PLAYER 2 PLAYED" << endl;
+			played2 = true;
+			system("pause");
+		}
+		if (ReadKey(VK_UP))    input2 = 0.8;
+		if (ReadKey(VK_DOWN))  input2 = 1.0;
+		if (ReadKey(VK_LEFT))  input2 = 1.2;
+		if (ReadKey(VK_RIGHT)) input2 = 1.5;
 
+		Sleep(100);
+
+		if (played1 &&
+			played2)
+		{
+			system("cls");
+			cout << "PLAYER 1 AND 2 PLAYED" << endl;
+			system("pause");
+			DamageCalc(
+				players,
+				input1,
+				input2);
+			input1 = 0;
+		    input2 = 0;
+			played1 = false;
+			played2 = false;
+			if (
+				players[0]->m_vie <= 0 ||
+				players[1]->m_vie <= 0)
+			{
+				return;
+			}
+		}
+	}
+
+}
+void DamageCalc(
+	Creature* const (&PLAYERS)[PLAYER_MAX],
+	int INPUT1,
+	int INPUT2)
+{
+	/*
+	Les noms exacts des attaques sont 
+	laiss´es `a votre discr´etion.
+	Les attaques sont calcul´ees selon 
+	l’´equation suivante :
+	D = A * M * (100 / (100+B))
+	• D repr´esente les d´egˆats inflig´es ;
+	• A repr´esente la statistique d’attaque de la 
+		 cr´eature attaquante ;
+	• M repr´esente le multiplicateur de d´egˆats de 
+		 l’attaque utilis´ee ;
+	• B repr´esente la statistique de d´efense de la 
+		 cr´eature cibl´ee. 
+		 
+	Les d´egˆats doivent ˆetre arrondis `a l’entier le plus pr`es.
+
+	si 1 des 2 a la vie de 0 ou moins alors l'autre est marque gagnant
+	En cas de double mort = match nul
+
+	les creatures doivent demeurer dans la collection apres le combat
+	*/
+	float Attaque1 = 0;
+	float Multi1 = 0;
+	float Block1 = 0;
+	float DegatSubis1 = 0;
+	float Attaque2 = 0;
+	float Multi2 = 0;
+	float Block2 = 0;
+	float DegatSubis2 = 0;
+
+	system("cls");
+	cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+	
+	Attaque2 = PLAYERS[0]->m_att; // attaque player2
+	Multi2 = INPUT1;             // multiplicateur player2
+	Block1 = PLAYERS[1]->m_def; // defence player1
+
+	Attaque1 = PLAYERS[1]->m_att; // attaque player2
+	Multi1 = INPUT1;             // multiplicateur player2
+	Block2 = PLAYERS[0]->m_def; // defence player1
+
+	DegatSubis1 = // d´egˆats inflig´e apres calcul player1
+		Attaque1 * 
+		Multi1 * 
+		(100/(100+Block1));
+
+	//if (PLAYERS[0]->m_vie <= DegatSubis1)
+	//	DegatSubis1 = PLAYERS[0]->m_vie;
+	PLAYERS[0]->m_vie -= (int)DegatSubis1;
+
+	cout << "PLAYER 1 CALCULATED RECEIVED DAMAGE: " << endl;
+	cout << (int)DegatSubis1 << endl;
+
+	cout << endl;
+	cout << endl;
+	cout << endl;
+
+	DegatSubis2 = // d´egˆats inflig´e apres calcul player1
+		Attaque2 *
+		Multi2 *
+		(100 / (100 + Block2));
+
+	//if (PLAYERS[1]->m_vie <= DegatSubis2)
+	//	DegatSubis2 = PLAYERS[1]->m_vie;
+	PLAYERS[1]->m_vie -= (int)DegatSubis2;
+
+	cout << "PLAYER 2 CALCULATED RECEIVED DAMAGE: " << endl;
+	cout << (int)DegatSubis2 << endl;
+
+	cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+	
+	if (
+		PLAYERS[0]->m_vie <= 0 &&
+		PLAYERS[1]->m_vie <= 0)
+	{
+		system("cls");
+		cout << "PLAYER 1 AND PLAYER 2 DEAD" << endl;
+		cout << "DRAW" << endl;
+		system("pause");
+		return;
+	}
+
+	else if (PLAYERS[1]->m_vie <= 0)
+	{
+		system("cls");
+		cout << "PLAYER 2 DEAD" << endl;
+		cout << "PLAYER 1 WINS" << endl;
+		system("pause");
+		return;
+	}
+	else if (PLAYERS[0]->m_vie <= 0)
+	{
+		system("cls");
+		cout << "PLAYER 1 DEAD" << endl;
+		cout << "PLAYER 2 WINS" << endl;
+		system("pause");
+		return;
+	}
+	system("pause");
+}
+bool ReadKey(const int& key)
+{
+	return (GetAsyncKeyState(key) & 0x8000);
 }
 void Delete(
 	const vector<Creature*>& CREATURES)
