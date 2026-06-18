@@ -5,15 +5,17 @@
 void CreaturesDefaultAdd(
 	vector<Creature*>& CREATURES);
 void MenuCreatures(
-	const vector<Creature*>& CREATURES);
+	vector<Creature*>& CREATURES);
 void MenuAfficherCreatures(
 	const vector<Creature*>& CREATURES);
 void MenuStatsCreature(
 	const vector<Creature*>& CREATURES);
 void MenuModCreature(
-	const vector<Creature*>& CREATURES);
+	vector<Creature*>& CREATURES);
+void MenuCreateCreature(
+	vector<Creature*>& CREATURES);
 void MenuDeleteCreature(
-	const vector<Creature*>& CREATURES);
+	vector<Creature*>& CREATURES);
 void MenuCombat(
 	const vector<Creature*>& CREATURES);
 void Combat(

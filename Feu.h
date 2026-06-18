@@ -3,9 +3,6 @@
 
 class Feu : public Creature
 {
-	// Feu : 
-	// inflige 10% de d´egˆats 
-	// suppl´ementaires.
 public:
 	Feu();
 	Feu(
@@ -18,5 +15,4 @@ public:
 		const float& ATT,
 		const float& DEF) override;
 	virtual ~Feu();
-private:
 };

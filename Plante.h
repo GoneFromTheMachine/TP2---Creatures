@@ -3,10 +3,6 @@
 
 class Plante : public Creature
 {
-	// Plante : 
-	// r´eg´en`ere 5% de ses 
-	// points de vie 
-	// `a la fin de chaque tour.
 public:
 	Plante();
 	Plante(
@@ -19,5 +15,4 @@ public:
 		const float& ATT,
 		const float& DEF) override;
 	virtual ~Plante();
-private:
 };

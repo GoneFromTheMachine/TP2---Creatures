@@ -3,10 +3,6 @@
 
 class Electrique : public Creature
 {
-	// Electrique : 
-	// poss`ede 20% de chances de 
-	// r´ep´eter son attaque une 
-	// seconde fois.
 public:
 	Electrique();
 	Electrique(
@@ -19,5 +15,4 @@ public:
 		const float& ATT,
 		const float& DEF) override;
 	virtual ~Electrique();
-private:
 };

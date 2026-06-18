@@ -61,91 +61,12 @@ void Creature::Print() const
 	cout << "def: " << m_def << endl;
 	cout << endl;
 }
-void CreateCreature(
-	vector<Creature*>& CREATURES)
-{
-
-	// Cr´eation de cr´eatures
-	// Votre premi`ere tˆache consiste 
-	// `a permettre `a l’utilisateur de 
-	// cr´eer des cr´eatures 
-	// personnalis´ees.
-	string inputName;
-	string inputType;
-	int inputVie;
-	int inputAtt;
-	int inputDef;
-
-	while (true)
-	{
-		system("cls");
-		cout << endl;
-		cout << "---------------------" << endl;
-		cout << "| Creation Creature |" << endl;
-		cout << "---------------------" << endl;
-		cout << "donner inputVie: ";
-		cin >> inputVie;
-		cout << endl;
-		cout << "donner inputAtt: ";
-		cin >> inputAtt;
-		cout << endl;
-		cout << "donner inputDef: ";
-		cin >> inputDef;
-		cout << endl;
-
-		if (inputVie == 0 ||
-			inputAtt == 0 ||
-			inputDef == 0)
-		{
-			system("cls");
-			cout << "une des 3 entrees est invalide" << endl;
-			cout << "inputVie: " << inputVie << endl;
-			cout << "inputAtt: " << inputAtt << endl;
-			cout << "inputDef: " << inputDef << endl;
-			cout << "creature ne vas pas etre construite" << endl;
-			cout << "donner un numero valide qui n'est pas 0" << endl;
-			system("pause");
-			continue;
-		}
-		else
-		{
-			//if (inputType == Creature::PrintType(ECreatureType::Eau))
-			//{
-
-			//}
-			CREATURES.push_back(new Electrique(
-				"Electricite pure",
-				15,
-				55,
-				0));
-			//m_vie = inputVie;
-			//m_vie = inputAtt;
-			//m_vie = inputDef;
-		}
-	}
-
-}
-void Creature::ModCreature(
-	const vector<Creature*>& CREATURES) const
-{
-	//system("cls");
-	//cout << "change creatures" << endl;
-	//system("pause");
-}
-void Creature::DeleteCreature(
-	const vector<Creature*>& CREATURES) const
-{
-	//system("cls");
-	//cout << "delete creatures" << endl;
-	//system("pause");
-}
 void Creature::DistributionPoints(
 	const float& VIE,
 	const float& ATT,
 	const float& DEF)
 {
-
-
+	m_ptsDistrubution = 100;
 	cout << endl;
 	// assignation VIE
 	if (m_ptsDistrubution > VIE)
@@ -209,9 +130,8 @@ void Creature::DistributionPoints(
 		cout << "points de distributions restants: ";
 		cout << m_ptsDistrubution << endl;
 	}
-
-
-
+	
+	// redistribution points
 	if (m_ptsDistrubution > 0)
 	{
 		m_vie += m_ptsDistrubution / 3;
@@ -226,4 +146,18 @@ void Creature::DistributionPoints(
 		cout << m_ptsDistrubution << endl;
 	}
 	cout << endl;
+}
+void Creature::ModificationNameType(
+	const string& NAME,
+	const ECreatureType& TYPE)
+{
+	if (TYPE > ECreatureType::Count ||
+		static_cast<int>(TYPE) < 0)
+	{
+		system("cls");
+		cout << "invalid type input" << endl;
+		system("pause");
+	}
+	m_name = NAME;
+	m_type = TYPE;
 }
