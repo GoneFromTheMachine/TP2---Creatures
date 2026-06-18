@@ -128,7 +128,7 @@
     <ClCompile Include="Electrique.cpp" />
     <ClCompile Include="Feu.cpp" />
     <ClCompile Include="Plante.cpp" />
-    <ClCompile Include="TP2 - Creatures.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Creature.h" />
@@ -136,7 +136,7 @@
     <ClInclude Include="Electrique.h" />
     <ClInclude Include="Feu.h" />
     <ClInclude Include="Plante.h" />
-    <ClInclude Include="TP2 - Creatures.h" />
+    <ClInclude Include="Main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -34,6 +34,13 @@ Eau::Eau(
 	cout << "... et la creature est une Eau avec id# " << endl;
 	cout << m_id << endl;
 }
+
+
+void Eau::DistributionPoints()
+{
+
+}
+
 Eau::~Eau()
 {
 	cout << "... creature detruite d'eau " << endl;

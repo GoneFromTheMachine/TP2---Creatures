@@ -14,6 +14,7 @@ public:
 		const float& VIE,
 		const float& ATT,
 		const float& DEF);
+	void DistributionPoints();
 	virtual ~Plante();
 private:
 };

@@ -34,6 +34,10 @@ Feu::Feu(
 	cout << "... et la creature est une Feu avec id# " << endl;
 	cout << m_id << endl;
 }
+void Feu::DistributionPoints()
+{
+
+}
 Feu::~Feu() 
 {
 	cout << "... creature detruite de feu " << endl;

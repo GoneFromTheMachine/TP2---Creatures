@@ -39,6 +39,10 @@ Electrique::Electrique(
 	cout << "avec id# " << endl;
 	cout << m_id << endl;
 }
+void Electrique::DistributionPoints()
+{
+
+}
 Electrique::~Electrique()
 {
 	cout << "... creature detruite d'electrique ";

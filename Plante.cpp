@@ -37,6 +37,10 @@ Plante::Plante(
 	cout << "... et la creature est une Plante avec id# " << endl;
 	cout << m_id << endl;
 }
+void Plante::DistributionPoints()
+{
+
+}
 Plante::~Plante()
 {
 	cout << "... creature detruite plante " << endl;

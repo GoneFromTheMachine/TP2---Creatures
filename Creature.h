@@ -63,6 +63,7 @@ public:
 	float m_vie;
 	float m_att;
 	float m_def;
+	float m_ptsDistrubution = 100.0f;
 	Creature(
 		const string& NAME,
 		const ECreatureType& TYPE,
@@ -84,5 +85,6 @@ public:
 	void DeleteCreature(
 		const vector<Creature*>& CREATURES) 
 		const;
+	virtual void DistributionPoints() const = 0;
 private:
 };
