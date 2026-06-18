@@ -12,11 +12,6 @@ Electrique::Electrique() :
 		25,
 		66)
 {
-	// Electrique : 
-	// poss`ede 20% de chances de 
-	// r´ep´eter son attaque une seconde fois.
-	// TODO : implementer la chance de 20% de repeter 
-	// l'attaque une seconde fois ABSTRACT PURE CLASS
 	cout << "... creature detruite d'electrique ";
 	cout << "avec id# " << m_id << endl;
 	DistributionPoints(

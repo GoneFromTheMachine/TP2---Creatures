@@ -78,6 +78,9 @@ public:
 		const;
 	void Print() 
 		const;
+	void CreateCreature(
+		const vector<Creature*>& CREATURES)
+		const;
 	void ModCreature(
 		const vector<Creature*>& CREATURES) 
 		const;

@@ -57,6 +57,15 @@ void Creature::Print() const
 	cout << "def: " << m_def << endl;
 	cout << endl;
 }
+void CreateCreature(
+	const vector<Creature*>& CREATURES)
+{
+	// Cr´eation de cr´eatures
+	// Votre premi`ere tˆache consiste 
+	// `a permettre `a l’utilisateur de 
+	// cr´eer des cr´eatures 
+	// personnalis´ees.
+}
 void Creature::ModCreature(
 	const vector<Creature*>& CREATURES) const
 {
