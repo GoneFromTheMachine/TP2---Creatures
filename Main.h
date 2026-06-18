@@ -14,5 +14,10 @@ void MenuModCreature(
 	const vector<Creature*>& CREATURES);
 void MenuDeleteCreature(
 	const vector<Creature*>& CREATURES);
+void MenuCombat(
+	const vector<Creature*>& CREATURES);
+void Combat(
+	const vector<Creature*>& CREATURES,
+	const vector<int> SELECTED);
 void Delete(
 	const vector<Creature*>& CREATURES);

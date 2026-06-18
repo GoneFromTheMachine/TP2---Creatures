@@ -32,8 +32,6 @@ Eau::Eau(
 	cout << m_id << endl;
 	DistributionPoints(VIE, ATT, DEF);
 }
-
-
 void Eau::DistributionPoints(
 	const float& VIE,
 	const float& ATT,
@@ -46,7 +44,6 @@ void Eau::DistributionPoints(
 		ATT, 
 		DEF*1.1f);
 }
-
 Eau::~Eau()
 {
 	cout << "... creature detruite d'eau " << endl;

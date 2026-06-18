@@ -1,4 +1,8 @@
 ﻿#include "Creature.h"
+#include "Electrique.h"
+#include "Feu.h"
+#include "Eau.h"
+#include "Plante.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -58,13 +62,68 @@ void Creature::Print() const
 	cout << endl;
 }
 void CreateCreature(
-	const vector<Creature*>& CREATURES)
+	vector<Creature*>& CREATURES)
 {
+
 	// Cr´eation de cr´eatures
 	// Votre premi`ere tˆache consiste 
 	// `a permettre `a l’utilisateur de 
 	// cr´eer des cr´eatures 
 	// personnalis´ees.
+	string inputName;
+	string inputType;
+	int inputVie;
+	int inputAtt;
+	int inputDef;
+
+	while (true)
+	{
+		system("cls");
+		cout << endl;
+		cout << "---------------------" << endl;
+		cout << "| Creation Creature |" << endl;
+		cout << "---------------------" << endl;
+		cout << "donner inputVie: ";
+		cin >> inputVie;
+		cout << endl;
+		cout << "donner inputAtt: ";
+		cin >> inputAtt;
+		cout << endl;
+		cout << "donner inputDef: ";
+		cin >> inputDef;
+		cout << endl;
+
+		if (inputVie == 0 ||
+			inputAtt == 0 ||
+			inputDef == 0)
+		{
+			system("cls");
+			cout << "une des 3 entrees est invalide" << endl;
+			cout << "inputVie: " << inputVie << endl;
+			cout << "inputAtt: " << inputAtt << endl;
+			cout << "inputDef: " << inputDef << endl;
+			cout << "creature ne vas pas etre construite" << endl;
+			cout << "donner un numero valide qui n'est pas 0" << endl;
+			system("pause");
+			continue;
+		}
+		else
+		{
+			//if (inputType == Creature::PrintType(ECreatureType::Eau))
+			//{
+
+			//}
+			CREATURES.push_back(new Electrique(
+				"Electricite pure",
+				15,
+				55,
+				0));
+			//m_vie = inputVie;
+			//m_vie = inputAtt;
+			//m_vie = inputDef;
+		}
+	}
+
 }
 void Creature::ModCreature(
 	const vector<Creature*>& CREATURES) const
@@ -85,6 +144,8 @@ void Creature::DistributionPoints(
 	const float& ATT,
 	const float& DEF)
 {
+
+
 	cout << endl;
 	// assignation VIE
 	if (m_ptsDistrubution > VIE)
@@ -148,6 +209,9 @@ void Creature::DistributionPoints(
 		cout << "points de distributions restants: ";
 		cout << m_ptsDistrubution << endl;
 	}
+
+
+
 	if (m_ptsDistrubution > 0)
 	{
 		m_vie += m_ptsDistrubution / 3;

@@ -79,7 +79,7 @@ public:
 	void Print() 
 		const;
 	void CreateCreature(
-		const vector<Creature*>& CREATURES)
+		vector<Creature*>& CREATURES)
 		const;
 	void ModCreature(
 		const vector<Creature*>& CREATURES) 
