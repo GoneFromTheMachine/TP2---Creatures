@@ -68,6 +68,17 @@ void Creature::DistributionPoints(
 {
 	m_ptsDistrubution = 100;
 	cout << endl;
+	if (
+		VIE > 98 ||
+		ATT > 98 ||
+		DEF > 98)
+	{
+		m_vie = m_ptsDistrubution / 3;
+		m_att = m_ptsDistrubution / 3;
+		m_def = m_ptsDistrubution / 3;
+		return;
+	}
+
 	// assignation VIE
 	if (m_ptsDistrubution > VIE)
 	{
