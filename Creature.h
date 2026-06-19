@@ -22,7 +22,7 @@ public:
 	float m_vie;
 	float m_att;
 	float m_def;
-	float m_chanceDoubleAtt = 1;
+	float m_chanceDoubleAtt = 0;
 	float m_regenPerTurn = 0;
 	float m_ptsDistrubution = 100.0f;
 	Creature(

@@ -51,7 +51,7 @@ void Electrique::DistributionPoints(
 		VIE, 
 		ATT, 
 		DEF);
-	m_chanceDoubleAtt = 1.2f;
+	m_chanceDoubleAtt = 0.2f;
 }
 Electrique::~Electrique()
 {

@@ -8,10 +8,12 @@
 #include <vector>
 #include <cstdlib>
 #include <windows.h>
+#include <ctime>
 using namespace std;
 
 int main()
 {
+	srand(time(nullptr));
 	vector<Creature*> creatures = {};
 	CreaturesDefaultAdd(creatures);
 	MenuCreatures(creatures);
@@ -435,7 +437,7 @@ void MenuCombat(
 		cout << "-------------------------------" << endl;
 		cout << "creatures selectionnes:" << endl;
 		for (int i = 0; i < selectedIds.size(); i++)
-			cout << i << ": " << CREATURES[selectedIds[i]]->m_name << endl;
+			cout << i << ": " << CREATURES[selectedIds[i]-1]->m_name << endl;
 		cout << endl;
 		for (int i = 0; i < CREATURES.size(); i++)
 			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
@@ -553,6 +555,7 @@ void Combat(
 			cout << endl;
 			cout << endl;
 		}
+
 		cout << endl;
 		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
 		cout << "(W ou →) Attaque rapide : multiplicateur 0.8" << endl;
@@ -562,10 +565,10 @@ void Combat(
 		cout << endl;
 		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
 		// INPUT1
-		if (ReadKey('W') ||
-			ReadKey('A') ||
-			ReadKey('S') ||
-			ReadKey('D'))
+		if ((ReadKey('W') && !played1) ||
+			(ReadKey('A') && !played1) ||
+			(ReadKey('S') && !played1) ||
+			(ReadKey('D') && !played1))
 		{
 			system("cls");
 			cout << "PLAYER 1 PLAYED" << endl;
@@ -578,10 +581,10 @@ void Combat(
 		if (ReadKey('D')) input1 = 1.5;
 		
 		// INPUT2
-		if (ReadKey(VK_UP) ||
-			ReadKey(VK_DOWN) ||
-			ReadKey(VK_LEFT) ||
-			ReadKey(VK_RIGHT))
+		if ((ReadKey(VK_UP) && !played2) ||
+			(ReadKey(VK_DOWN) && !played2) ||
+			(ReadKey(VK_LEFT) && !played2) ||
+			(ReadKey(VK_RIGHT) && !played2))
 		{
 			system("cls");
 			cout << "PLAYER 2 PLAYED" << endl;
@@ -613,6 +616,7 @@ void Combat(
 				players[0]->m_vie <= 0 ||
 				players[1]->m_vie <= 0)
 			{
+				system("pause");
 				return;
 			}
 		}
@@ -621,8 +625,8 @@ void Combat(
 }
 void DamageCalc(
 	Creature* const (&PLAYERS)[PLAYER_MAX],
-	int INPUT1,
-	int INPUT2)
+	float INPUT1,
+	float INPUT2)
 {
 	/*
 	Les noms exacts des attaques sont 
@@ -646,19 +650,24 @@ void DamageCalc(
 	les creatures doivent demeurer dans la collection apres le combat
 	*/
 	float Attaque1 = 0;
-	float Multi1 = 0;
+	float Multi1 = INPUT1;
 	float Block1 = 0;
 	float DegatSubis1 = 0;
+	float RegenTurn1 = PLAYERS[0]->m_regenPerTurn;
+	float chanceDoubleAtt1 = PLAYERS[0]->m_chanceDoubleAtt;
+
 	float Attaque2 = 0;
-	float Multi2 = 0;
+	float Multi2 = INPUT2;
 	float Block2 = 0;
 	float DegatSubis2 = 0;
+	float RegenTurn2 = PLAYERS[1]->m_regenPerTurn;
+	float chanceDoubleAtt2 = PLAYERS[1]->m_chanceDoubleAtt;
 
 	system("cls");
 	cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
 	
 	Attaque2 = PLAYERS[0]->m_att; // attaque player2
-	Multi2 = INPUT1;             // multiplicateur player2
+	Multi2 = INPUT2;             // multiplicateur player2
 	Block1 = PLAYERS[1]->m_def; // defence player1
 
 	Attaque1 = PLAYERS[1]->m_att; // attaque player2
@@ -670,9 +679,13 @@ void DamageCalc(
 		Multi1 * 
 		(100/(100+Block1));
 
-	//if (PLAYERS[0]->m_vie <= DegatSubis1)
-	//	DegatSubis1 = PLAYERS[0]->m_vie;
 	PLAYERS[0]->m_vie -= (int)DegatSubis1;
+
+	cout << "Attaque1: " << Attaque1 << endl;
+	cout << "Multi1: " << Multi1 << endl;
+	cout << "Block1: " << Block1 << endl;
+	cout << "DegatSubis1: " << DegatSubis1 << endl;
+	cout << "vie1: " << PLAYERS[0]->m_vie << endl;
 
 	cout << "PLAYER 1 CALCULATED RECEIVED DAMAGE: " << endl;
 	cout << (int)DegatSubis1 << endl;
@@ -686,15 +699,40 @@ void DamageCalc(
 		Multi2 *
 		(100 / (100 + Block2));
 
-	//if (PLAYERS[1]->m_vie <= DegatSubis2)
-	//	DegatSubis2 = PLAYERS[1]->m_vie;
 	PLAYERS[1]->m_vie -= (int)DegatSubis2;
+	cout << "Attaque2: " << Attaque2 << endl;
+	cout << "Multi2: " << Multi2 << endl;
+	cout << "Block2: " << Block2 << endl;
+	cout << "DegatSubis2: " << DegatSubis2 << endl;
+	cout << "vie2: " << PLAYERS[1]->m_vie << endl;
 
 	cout << "PLAYER 2 CALCULATED RECEIVED DAMAGE: " << endl;
 	cout << (int)DegatSubis2 << endl;
 
 	cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
-	
+	system("pause");
+
+	system("cls");
+	cout << "double  attaque check" << endl;
+	const float maxRandValue = 1.0f;
+	float randomValue1 = rand() / maxRandValue;
+	float randomValue2 = rand() / maxRandValue;
+	if (randomValue1 <= PLAYERS[0]->m_chanceDoubleAtt)
+	{
+		system("pause");
+		cout << "PLAYER1 DOES A DOUBLE ATTACK" << endl;
+		PLAYERS[1]->m_vie -= DegatSubis2;
+		system("cls");
+
+	}
+	if (randomValue2 <= PLAYERS[1]->m_chanceDoubleAtt)
+	{
+		system("pause");
+		cout << "PLAYER2 DOES A DOUBLE ATTACK" << endl;
+		PLAYERS[0]->m_vie -= DegatSubis1;
+		system("cls");
+	}
+
 	if (
 		PLAYERS[0]->m_vie <= 0 &&
 		PLAYERS[1]->m_vie <= 0)
@@ -722,6 +760,20 @@ void DamageCalc(
 		system("pause");
 		return;
 	}
+
+	system("cls");
+	cout << "apply regen tour" << endl;
+	cout << "Player1 vie " << PLAYERS[0]->m_vie << endl;
+	cout << "+ " << RegenTurn1 << endl;
+	PLAYERS[0]->m_vie += RegenTurn1;
+	cout << "Player1 vie " << PLAYERS[0]->m_vie << endl;
+	cout << endl;
+
+	cout << "Player2 vie " << PLAYERS[1]->m_vie << endl;
+	cout << "+ " << RegenTurn2 << endl;
+	PLAYERS[1]->m_vie += RegenTurn2;
+	cout << "Player2 vie " << PLAYERS[1]->m_vie << endl;
+	cout << endl;
 	system("pause");
 }
 bool ReadKey(const int& key)

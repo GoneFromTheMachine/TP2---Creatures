@@ -24,8 +24,8 @@ void Combat(
 	const vector<int> SELECTED_ID);
 void DamageCalc(
 	Creature* const (&PLAYERS)[PLAYER_MAX], 
-	int INPUT1, 
-	int INPUT2);
+	float INPUT1, 
+	float INPUT2);
 bool ReadKey(const int& key);
 void Delete(
 	const vector<Creature*>& CREATURES);
