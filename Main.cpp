@@ -340,7 +340,8 @@ void MenuCreateCreature(
 		cout << endl;
 
 		for (int i = 0; i < (int)ECreatureType::Count; i++)
-			cout << "(" << i << ") " << CREATURES[0]->PrintType(static_cast<ECreatureType>(i)) << endl;
+			cout << "(" << i << ") " << CREATURES[0]->PrintType(
+				static_cast<ECreatureType>(i)) << endl;
 
 		cout << "donner inputType: ";
 		cin >> inputType;
@@ -371,8 +372,9 @@ void MenuCreateCreature(
 			cout << "inputName: " << inputName << endl;
 			cout << endl;
 			cout << "creature ne vas pas etre construite" << endl;
-			cout << "donner un numero valide qui n'est pas 0 pour die, att, def" << endl;
-			cout << "ou le type n'est pas parmis les choix de types permis" << endl;
+			cout << "donner un numero valide qui n'est pas 0";
+			cout << "pour die, att, def ou le type n'est pas";
+			cout << "parmis les choix de types permis" << endl;
 			system("pause");
 			inputVie = 1;
 			inputAtt = 1;
@@ -539,7 +541,7 @@ void Combat(
 				players[i] = CREATURES[j];
 	while (true) 
 	{
-		system("cls");
+		ClearScreen(0, 0);
 		cout << endl;
 		cout << "-------------------------------" << endl;
 		cout << "| The Legendary Monster Arena |" << endl;
@@ -779,6 +781,16 @@ void DamageCalc(
 bool ReadKey(const int& key)
 {
 	return (GetAsyncKeyState(key) & 0x8000);
+}
+void ClearScreen(
+	short x,
+	short y)
+{
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(h, pos);
 }
 void Delete(
 	const vector<Creature*>& CREATURES)

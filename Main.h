@@ -27,5 +27,8 @@ void DamageCalc(
 	float INPUT1, 
 	float INPUT2);
 bool ReadKey(const int& key);
+void ClearScreen(
+	short x,
+	short y);
 void Delete(
 	const vector<Creature*>& CREATURES);
