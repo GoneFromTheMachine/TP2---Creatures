@@ -5,10 +5,7 @@
 #include "Feu.h"
 #include "Eau.h"
 #include "Main.h"
-#include <vector>
-#include <cstdlib>
-#include <windows.h>
-#include <ctime>
+
 using namespace std;
 
 int main()
@@ -155,8 +152,10 @@ void MenuStatsCreature(
 			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
 		cout << "(-1)" << " return to menu" << endl;
 		cin >> input;
-		if ((input < 0 && input != -1) ||
-			(input > CREATURES.size() && input != -1))
+		if ((input < 0 && 
+			 input != -1) ||
+			(input >= CREATURES.size() && 
+			 input != -1))
 		{
 			system("cls");
 			cout << "invalid input" << endl;
@@ -206,8 +205,10 @@ void MenuModCreature(
 			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
 		cout << "(-1)" << " return to menu" << endl;
 		cin >> input;
-		if ((input < 0 && input != -1) ||
-			(input > CREATURES.size() && input != -1))
+		if ((input < 0 && 
+			 input != -1) ||
+			(input >= CREATURES.size() && 
+			 input != -1))
 		{
 			system("cls");
 			cout << "invalid input" << endl;
@@ -281,8 +282,10 @@ void MenuDeleteCreature(
 			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
 		cout << "(-1)" << " return to menu" << endl;
 		cin >> input;
-		if ((input < 0  && input != -1) ||
-			(input > CREATURES.size() && input != -1))
+		if ((input < 0  && 
+			 input != -1) ||
+			(input >= CREATURES.size() && 
+			input != -1))
 		{
 			system("cls");
 			cout << "invalid input" << endl;
@@ -329,13 +332,15 @@ void MenuCreateCreature(
 		cout << "---------------------" << endl;
 		cout << "| Creation Creature |" << endl;
 		cout << "---------------------" << endl;
-		cout << "donner inputVie: ";
+		cout << "le total des points distribues";
+		cout << "ne peux pas depasser 100" << endl;
+		cout << "donner inputVie (1 point = 5 points de vie): ";
 		cin >> inputVie;
 		cout << endl;
-		cout << "donner inputAtt: ";
+		cout << "donner inputAtt (1 point = 1 points d'attaque): ";
 		cin >> inputAtt;
 		cout << endl;
-		cout << "donner inputDef: ";
+		cout << "donner inputDef (1 point = 1 points de defence): ";
 		cin >> inputDef;
 		cout << endl;
 
@@ -352,11 +357,12 @@ void MenuCreateCreature(
 		cin >> inputName;
 		cout << endl;
 
-		cout << "static_cast<int>(ECreatureType::Count " << static_cast<int>(ECreatureType::Count) << endl;
+		cout << "static_cast<int>(ECreatureType::Count ";
+		cout << static_cast<int>(ECreatureType::Count) << endl;
 		if (inputVie == 0 ||
 			inputAtt == 0 ||
 			inputDef == 0 ||
-			inputType > (int)ECreatureType::Count ||
+			inputType >= (int)ECreatureType::Count ||
 			inputType < 0)
 		{
 			system("cls");
@@ -445,8 +451,10 @@ void MenuCombat(
 			cout << "(" << i << ") " << CREATURES[i]->m_name << endl;
 		cout << "(-1)" << " return to menu" << endl;
 		cin >> input;
-		if ((input < 0 && input != -1) ||
-			(input > CREATURES.size() && input != -1))
+		if ((input < 0 && 
+			 input != -1) ||
+			(input >= CREATURES.size() && 
+			 input != -1))
 		{
 			cout << "invalid input" << endl;
 			system("pause");
@@ -542,6 +550,7 @@ void Combat(
 	while (true) 
 	{
 		ClearScreen(0, 0);
+
 		cout << endl;
 		cout << "-------------------------------" << endl;
 		cout << "| The Legendary Monster Arena |" << endl;
@@ -551,6 +560,12 @@ void Combat(
 		cout << endl;
 		for (int i = 0; i < PLAYER_MAX; i++)
 		{
+			if (players[i] == nullptr)
+			{
+				cout << "ERROR: player " << i << " is nullptr" << endl;
+				system("pause");
+				return;
+			}
 			cout << "FIGHTER " << i << " STATS:" << endl;
 			players[i]->Print();
 			cout << endl;
@@ -560,12 +575,19 @@ void Combat(
 
 		cout << endl;
 		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
-		cout << "(W ou →) Attaque rapide : multiplicateur 0.8" << endl;
-		cout << "(A ou ←) Attaque normale : multiplicateur 1.0" << endl;
-		cout << "(S ou ↓) Attaque puissante : multiplicateur 1.2" << endl;
-		cout << "(D ou ↑) Attaque ultime : multiplicateur 1.5" << endl;
+		cout << endl;
+		cout << "(W) " << players[0]->m_attRapide << " : multiplicateur 0.8" << endl;
+		cout << "(A) " << players[0]->m_attNormale << " : multiplicateur 1.0" << endl;
+		cout << "(S) " << players[0]->m_attPuissante << " : multiplicateur 1.2" << endl;
+		cout << "(D) " << players[0]->m_attUltime << " : multiplicateur 1.5" << endl;
+		cout << endl;
+		cout << "(→) " << players[1]->m_attRapide << " : multiplicateur 0.8" << endl;
+		cout << "(←) " << players[1]->m_attNormale << " : multiplicateur 1.0" << endl;
+		cout << "(↓) " << players[1]->m_attPuissante << " : multiplicateur 1.2" << endl;
+		cout << "(↑) " << players[1]->m_attUltime << " : multiplicateur 1.5" << endl;
 		cout << endl;
 		cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
+		
 		// INPUT1
 		if ((ReadKey('W') && !played1) ||
 			(ReadKey('A') && !played1) ||
@@ -578,14 +600,14 @@ void Combat(
 			system("pause");
 		}
 		if (ReadKey('W')) input1 = 0.8;
-		if (ReadKey('S')) input1 = 1.0;
-		if (ReadKey('A')) input1 = 1.2;
+		if (ReadKey('A')) input1 = 1.0;
+		if (ReadKey('S')) input1 = 1.2;
 		if (ReadKey('D')) input1 = 1.5;
 		
 		// INPUT2
-		if ((ReadKey(VK_UP) && !played2) ||
-			(ReadKey(VK_DOWN) && !played2) ||
-			(ReadKey(VK_LEFT) && !played2) ||
+		if ((ReadKey(VK_UP)    && !played2) ||
+			(ReadKey(VK_DOWN)  && !played2) ||
+			(ReadKey(VK_LEFT)  && !played2) ||
 			(ReadKey(VK_RIGHT) && !played2))
 		{
 			system("cls");
@@ -623,7 +645,6 @@ void Combat(
 			}
 		}
 	}
-
 }
 void DamageCalc(
 	Creature* const (&PLAYERS)[PLAYER_MAX],
@@ -681,7 +702,11 @@ void DamageCalc(
 		Multi1 * 
 		(100/(100+Block1));
 
-	PLAYERS[0]->m_vie -= (int)DegatSubis1;
+	// Eau : r´eduit tous les d´egˆats re¸cus de 10%.
+	if (PLAYERS[0]->m_type == ECreatureType::Eau)
+		DegatSubis1 *= 0.9f;
+
+	PLAYERS[0]->m_vie -= round(DegatSubis1);
 
 	cout << "Attaque1: " << Attaque1 << endl;
 	cout << "Multi1: " << Multi1 << endl;
@@ -690,7 +715,7 @@ void DamageCalc(
 	cout << "vie1: " << PLAYERS[0]->m_vie << endl;
 
 	cout << "PLAYER 1 CALCULATED RECEIVED DAMAGE: " << endl;
-	cout << (int)DegatSubis1 << endl;
+	cout << round(DegatSubis1) << endl;
 
 	cout << endl;
 	cout << endl;
@@ -701,7 +726,12 @@ void DamageCalc(
 		Multi2 *
 		(100 / (100 + Block2));
 
-	PLAYERS[1]->m_vie -= (int)DegatSubis2;
+	// Eau : r´eduit tous les d´egˆats re¸cus de 10%.
+	if (PLAYERS[1]->m_type == ECreatureType::Eau)
+		DegatSubis2 *= 0.9f;
+
+	PLAYERS[1]->m_vie -= round(DegatSubis2);
+
 	cout << "Attaque2: " << Attaque2 << endl;
 	cout << "Multi2: " << Multi2 << endl;
 	cout << "Block2: " << Block2 << endl;
@@ -709,16 +739,15 @@ void DamageCalc(
 	cout << "vie2: " << PLAYERS[1]->m_vie << endl;
 
 	cout << "PLAYER 2 CALCULATED RECEIVED DAMAGE: " << endl;
-	cout << (int)DegatSubis2 << endl;
+	cout << round(DegatSubis2) << endl;
 
 	cout << "[o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o][o_o]" << endl;
 	system("pause");
 
 	system("cls");
 	cout << "double  attaque check" << endl;
-	const float maxRandValue = 1.0f;
-	float randomValue1 = rand() / maxRandValue;
-	float randomValue2 = rand() / maxRandValue;
+	float randomValue1 = (float)rand() / RAND_MAX;
+	float randomValue2 = (float)rand() / RAND_MAX;
 	if (randomValue1 <= PLAYERS[0]->m_chanceDoubleAtt)
 	{
 		system("pause");
@@ -767,13 +796,13 @@ void DamageCalc(
 	cout << "apply regen tour" << endl;
 	cout << "Player1 vie " << PLAYERS[0]->m_vie << endl;
 	cout << "+ " << RegenTurn1 << endl;
-	PLAYERS[0]->m_vie += RegenTurn1;
+	PLAYERS[0]->m_vie += PLAYERS[0]->m_vie * RegenTurn1;
 	cout << "Player1 vie " << PLAYERS[0]->m_vie << endl;
 	cout << endl;
 
 	cout << "Player2 vie " << PLAYERS[1]->m_vie << endl;
 	cout << "+ " << RegenTurn2 << endl;
-	PLAYERS[1]->m_vie += RegenTurn2;
+	PLAYERS[1]->m_vie += PLAYERS[1]->m_vie * RegenTurn2;
 	cout << "Player2 vie " << PLAYERS[1]->m_vie << endl;
 	cout << endl;
 	system("pause");

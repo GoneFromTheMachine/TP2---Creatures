@@ -14,6 +14,10 @@ Feu::Feu() :
 {
 	cout << "... et la creature est un Feu avec id# " << endl;
 	cout << m_id << endl;
+	m_attRapide = "Flamme";
+	m_attNormale = "Boule de feu";
+	m_attPuissante = "Explosion";
+	m_attUltime = "Brasier";
 	DistributionPoints(
 		10, 
 		2,
@@ -33,6 +37,10 @@ Feu::Feu(
 {
 	cout << "... et la creature est une Feu avec id# " << endl;
 	cout << m_id << endl;
+	m_attRapide = "Flamme";
+	m_attNormale = "Boule de feu";
+	m_attPuissante = "Explosion";
+	m_attUltime = "Brasier";
 	DistributionPoints(
 		VIE, 
 		ATT, 

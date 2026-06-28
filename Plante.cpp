@@ -15,7 +15,14 @@ Plante::Plante() :
 {
 	cout << "... et la creature est une Plante avec id# " << endl;
 	cout << m_id << endl;
-	DistributionPoints(10, 2, 1);
+	m_attRapide = "Racine";
+	m_attNormale = "Liane";
+	m_attPuissante = "Epine";
+	m_attUltime = "Foret vivante";
+	DistributionPoints(
+		10, 
+		2, 
+		1);
 }
 Plante::Plante(
 	const string& NAME,
@@ -31,7 +38,14 @@ Plante::Plante(
 {
 	cout << "... et la creature est une Plante avec id# " << endl;
 	cout << m_id << endl;
-	DistributionPoints(VIE, ATT, DEF);
+	m_attRapide = "Racine";
+	m_attNormale = "Liane";
+	m_attPuissante = "Epine";
+	m_attUltime = "Foret vivante";
+	DistributionPoints(
+		VIE, 
+		ATT, 
+		DEF);
 }
 void Plante::DistributionPoints(
 	const float& VIE,
@@ -47,7 +61,6 @@ void Plante::DistributionPoints(
 		DEF);
 	m_regenPerTurn = 0.05f;
 }
-
 Plante::~Plante()
 {
 	cout << "... creature detruite plante " << endl;

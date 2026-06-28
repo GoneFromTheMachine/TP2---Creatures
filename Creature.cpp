@@ -68,21 +68,19 @@ void Creature::DistributionPoints(
 {
 	m_ptsDistrubution = 100;
 	cout << endl;
-	if (
-		VIE > 98 ||
-		ATT > 98 ||
-		DEF > 98)
+
+	if (VIE + ATT + DEF > m_ptsDistrubution)
 	{
-		m_vie = m_ptsDistrubution / 3;
-		m_att = m_ptsDistrubution / 3;
-		m_def = m_ptsDistrubution / 3;
+		m_vie = (m_ptsDistrubution / 3)*5;
+		m_att =  m_ptsDistrubution / 3;
+		m_def =  m_ptsDistrubution / 3;
 		return;
 	}
 
 	// assignation VIE
 	if (m_ptsDistrubution > VIE)
 	{
-		m_vie = VIE;
+		m_vie = VIE*5;
 		m_ptsDistrubution -= VIE;
 		cout << "assignation VIE ";
 		cout << m_vie << " ";
@@ -91,7 +89,7 @@ void Creature::DistributionPoints(
 	}
 	else
 	{
-		m_vie = m_ptsDistrubution;
+		m_vie = m_ptsDistrubution*5;
 		m_ptsDistrubution = 0;
 		cout << "plus de pts a distribuer ";
 		cout << "assignation VIE ";
@@ -145,9 +143,9 @@ void Creature::DistributionPoints(
 	// redistribution points
 	if (m_ptsDistrubution > 0)
 	{
-		m_vie += m_ptsDistrubution / 3;
-		m_att += m_ptsDistrubution / 3;
-		m_def += m_ptsDistrubution / 3;
+		m_vie += (m_ptsDistrubution / 3)*5;
+		m_att +=  m_ptsDistrubution / 3;
+		m_def +=  m_ptsDistrubution / 3;
 		m_ptsDistrubution = 0;
 		cout << "points non depenses redistribues : " << endl;
 		cout << "VIE: " << m_vie << endl;

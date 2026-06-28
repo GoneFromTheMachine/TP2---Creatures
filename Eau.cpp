@@ -14,7 +14,14 @@ Eau::Eau() :
 {
 	cout << "... et la creature est un Eau avec id# " << endl;
 	cout << m_id << endl;
-	DistributionPoints(55, 11, 55);
+	m_attRapide = "Jet d'eau";
+	m_attNormale = "Vague";
+	m_attPuissante = "Torrent";
+	m_attUltime = "Tsunami";
+	DistributionPoints(
+		55, 
+		11, 
+		55);
 }
 Eau::Eau(
 	const string& NAME,
@@ -30,7 +37,14 @@ Eau::Eau(
 {
 	cout << "... et la creature est une Eau avec id# " << endl;
 	cout << m_id << endl;
-	DistributionPoints(VIE, ATT, DEF);
+	m_attRapide = "Jet d'eau";
+	m_attNormale = "Vague";
+	m_attPuissante = "Torrent";
+	m_attUltime = "Tsunami";
+	DistributionPoints(
+		VIE, 
+		ATT, 
+		DEF);
 }
 void Eau::DistributionPoints(
 	const float& VIE,
@@ -42,7 +56,7 @@ void Eau::DistributionPoints(
 	Creature::DistributionPoints(
 		VIE, 
 		ATT, 
-		DEF*1.1f);
+		DEF);
 }
 Eau::~Eau()
 {

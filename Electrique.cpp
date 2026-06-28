@@ -14,6 +14,10 @@ Electrique::Electrique() :
 {
 	cout << "... creature detruite d'electrique ";
 	cout << "avec id# " << m_id << endl;
+	m_attRapide = "Etincelle";
+	m_attNormale = "Eclair";
+	m_attPuissante = "Foudre";
+	m_attUltime = "Tempete";
 	DistributionPoints(
 		5, 
 		25, 
@@ -34,6 +38,10 @@ Electrique::Electrique(
 	cout << "... et la creature est une Electrique ";
 	cout << "avec id# " << endl;
 	cout << m_id << endl;
+	m_attRapide = "Etincelle";
+	m_attNormale = "Eclair";
+	m_attPuissante = "Foudre";
+	m_attUltime = "Tempete";
 	DistributionPoints(
 		VIE, 
 		ATT, 
@@ -47,11 +55,12 @@ void Electrique::DistributionPoints(
 	// Electrique : 
 	// poss`ede 20% de chances de 
 	// r´ep´eter son attaque une seconde fois.
+	m_chanceDoubleAtt = 0.2f;
+
 	Creature::DistributionPoints(
 		VIE, 
 		ATT, 
 		DEF);
-	m_chanceDoubleAtt = 0.2f;
 }
 Electrique::~Electrique()
 {
